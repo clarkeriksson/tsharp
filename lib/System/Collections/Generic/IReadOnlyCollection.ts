@@ -11,6 +11,7 @@ interface IReadOnlyCollection<T = any> extends Iterable<T>
      * @description Gets the number of elements in the collection.
      * @returns {number} The number of elements in the collection.
      */
+    get Count(): number;
 
 }
 export default IReadOnlyCollection;

@@ -36,8 +36,9 @@ class List<T> implements IList<T>, IReadOnlyList<T>, Iterable<T>
         return iterator;
     }
 
-    constructor()
+    constructor(items: Iterable<T> = [])
     {
+        this._items = Array.from<T>(items);
         return new Proxy(this, {
             get: (target, prop, receiver) =>
             {

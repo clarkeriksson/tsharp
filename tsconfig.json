@@ -111,6 +111,9 @@
       "@/*": [
         "*"
       ],
+      "@/emul": [
+        "emul/_emul"
+      ],
       "@/System": [
         "System/_namespace"
       ],
