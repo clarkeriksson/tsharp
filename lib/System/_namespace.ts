@@ -3,6 +3,7 @@ import IStringable from "./IStringable";
 import DayOfWeek from "./DayOfWeek";
 import StringComparison from "./StringComparison";
 import StringSplitOptions from "./StringSplitOptions";
+import Random from "./Random";
 
 export
 {
@@ -11,4 +12,5 @@ export
     DayOfWeek,
     StringComparison,
     StringSplitOptions,
+    Random,
 }

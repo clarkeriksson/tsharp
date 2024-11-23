@@ -1,8 +1,22 @@
 {
   "name": "tsharp",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "C#-like classes and interfaces in typescript for personal use",
   "main": "index.ts",
+  "exports": {
+    ".": {
+      "import": "./index.ts"
+    },
+    "./emul": {
+      "import": "./lib/emul/_emul.ts"
+    },
+    "./System": {
+      "import": "./lib/System/_namespace.ts"
+    },
+    "./System.Collections.Generic": {
+      "import": "./lib/System/Collections/Generic/_namespace.ts"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

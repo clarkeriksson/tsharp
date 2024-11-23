@@ -84,3 +84,4 @@ class Random //TODO: this is mostly filled out with what I need exclusively, but
     }
 
 }
+export default Random;
