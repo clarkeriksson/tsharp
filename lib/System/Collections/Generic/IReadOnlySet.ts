@@ -1,4 +1,4 @@
-import { IReadOnlyCollection } from "@/System.Collections.Generic";
+import { type IReadOnlyCollection } from "@/System.Collections.Generic";
 
 /**
  * @interface IReadOnlySet<T>
@@ -31,4 +31,4 @@ interface IReadOnlySet<T = any> extends IReadOnlyCollection<T>, Iterable<T>
     // SetEquals(other: Iterable<T>): boolean;
 
 }
-export default IReadOnlySet;
+export type { IReadOnlySet };

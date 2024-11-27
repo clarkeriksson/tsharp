@@ -60,4 +60,4 @@ interface ICollection<T = any> extends Iterable<T>
     Remove(item: T): boolean;
 
 }
-export default ICollection;
+export type { ICollection };

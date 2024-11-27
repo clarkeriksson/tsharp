@@ -1,5 +1,5 @@
 import { out } from "@/emul";
-import { IDictionary, IReadOnlyDictionary, ICollection, List, KeyValuePair } from "@/System.Collections.Generic";
+import { type IDictionary, type IReadOnlyDictionary, type ICollection, List, KeyValuePair } from "@/System.Collections.Generic";
 
 /**
  * @class Dictionary<TKey,TValue>

@@ -1,4 +1,4 @@
-import { IList, IReadOnlyList } from "@/System.Collections.Generic";
+import { type IList, type IReadOnlyList } from "@/System.Collections.Generic";
 
 /**
  * @class List<T>

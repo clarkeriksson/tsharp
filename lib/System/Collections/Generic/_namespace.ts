@@ -1,28 +1,28 @@
-import ICollection from "./ICollection";
-import IReadOnlyCollection from "./IReadOnlyCollection";
-import IList from "./IList";
-import List from "./List";
-import IReadOnlyList from "./IReadOnlyList";
-import KeyValuePair from "./KeyValuePair";
-import IDictionary from "./IDictionary";
+import type { ICollection } from "./ICollection";
+import type { IReadOnlyCollection } from "./IReadOnlyCollection";
+import type { IList } from "./IList";
+import type { IReadOnlyList } from "./IReadOnlyList";
+import type { IDictionary } from "./IDictionary";
+import type { IReadOnlyDictionary } from "./IReadOnlyDictionary";
+import type { ISet } from "./ISet";
+import type { IReadOnlySet } from "./IReadOnlySet";
 import Dictionary from "./Dictionary";
-import IReadOnlyDictionary from "./IReadOnlyDictionary";
-import ISet from "./ISet";
-import IReadOnlySet from "./IReadOnlySet";
 import HashSet from "./HashSet";
+import KeyValuePair from "./KeyValuePair";
+import List from "./List";
 
 export 
 {
-    ICollection,
-    IReadOnlyCollection,
-    IList,
-    List,
-    IReadOnlyList,
-    KeyValuePair,
-    IDictionary,
+    type ICollection,
+    type IReadOnlyCollection,
+    type IList,
+    type IReadOnlyList,
+    type IDictionary,
+    type IReadOnlyDictionary,
+    type ISet,
+    type IReadOnlySet,
     Dictionary,
-    IReadOnlyDictionary,
-    ISet,
-    IReadOnlySet,
     HashSet,
+    KeyValuePair,
+    List,
 }

@@ -16,4 +16,4 @@ interface IStringable<T = any>
     ToString(): string;
 
 }
-export default IStringable;
+export type { IStringable };

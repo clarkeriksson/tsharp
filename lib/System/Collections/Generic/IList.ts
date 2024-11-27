@@ -1,4 +1,4 @@
-import { ICollection } from "@/System.Collections.Generic";
+import { type ICollection } from "@/System.Collections.Generic";
 
 /**
  * @interface IList<T>
@@ -46,4 +46,4 @@ interface IList<T = any> extends ICollection<T>, Iterable<T>
     RemoveAt(index: number): void;
 
 }
-export default IList;
+export type { IList };

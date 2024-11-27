@@ -1,5 +1,5 @@
 import { out } from "@/emul";
-import { ICollection, IReadOnlyCollection, KeyValuePair } from "@/System.Collections.Generic";
+import { type ICollection, type IReadOnlyCollection, KeyValuePair } from "@/System.Collections.Generic";
 
 /**
  * @interface IReadOnlyDictionary<TKey,TValue>
@@ -53,4 +53,4 @@ interface IReadOnlyDictionary<TKey, TValue> extends IReadOnlyCollection<KeyValue
     TryGetValue(key: TKey, value: out<TValue>): boolean;
 
 }
-export default IReadOnlyDictionary;
+export type { IReadOnlyDictionary };

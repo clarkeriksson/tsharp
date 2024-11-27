@@ -14,4 +14,4 @@ interface IReadOnlyCollection<T = any> extends Iterable<T>
     get Count(): number;
 
 }
-export default IReadOnlyCollection;
+export type { IReadOnlyCollection };

@@ -1,4 +1,4 @@
-import { ICollection } from "@/System.Collections.Generic";
+import { type ICollection } from "@/System.Collections.Generic";
 
 /**
  * @interface ISet<T>
@@ -39,4 +39,4 @@ interface ISet<T = any> extends ICollection<T>, Iterable<T>
     // UnionWith(other: Iterable<T>): void;
 
 }
-export default ISet;
+export type { ISet };

@@ -1,5 +1,5 @@
 import { out } from "@/emul";
-import { ICollection, KeyValuePair } from "@/System.Collections.Generic";
+import { type ICollection, KeyValuePair } from "@/System.Collections.Generic";
 
 type IKeyValueCollection<TKey, TValue> = Omit<ICollection<KeyValuePair<TKey, TValue>>, "Add" | "Remove"> & {
     Add(key: TKey, value: TValue): void;
@@ -86,7 +86,7 @@ interface IDictionary<TKey, TValue> extends IKeyValueCollection<TKey, TValue>
     TryGetValue(key: TKey, value: out<TValue>): boolean;
 
 }
-export default IDictionary;
+export type { IDictionary };
 
 enum InsertionBehavior
 {

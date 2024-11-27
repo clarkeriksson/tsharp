@@ -12,4 +12,4 @@ interface IDisposable
     Dispose(): void;
 
 }
-export default IDisposable;
+export type { IDisposable };

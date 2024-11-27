@@ -1,5 +1,5 @@
 import { out } from "@/emul";
-import { ICollection, ISet, IReadOnlyCollection, IReadOnlySet } from "@/System.Collections.Generic";
+import { type ICollection, type ISet, type IReadOnlyCollection, type IReadOnlySet } from "@/System.Collections.Generic";
 
 /**
  * @class HashSet<T>

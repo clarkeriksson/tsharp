@@ -1,4 +1,4 @@
-import { IReadOnlyCollection } from "@/System.Collections.Generic";
+import { type IReadOnlyCollection } from "@/System.Collections.Generic";
 
 /**
  * @interface IReadOnlyList<T>
@@ -18,4 +18,4 @@ interface IReadOnlyList<T = any> extends IReadOnlyCollection<T>, Iterable<T>
     [Symbol.iterator](): Iterator<T>;
 
 }
-export default IReadOnlyList;
+export type { IReadOnlyList };
