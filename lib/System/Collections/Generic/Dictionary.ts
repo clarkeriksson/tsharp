@@ -1,5 +1,5 @@
-import { out } from "@/emul";
-import { type IDictionary, type IReadOnlyDictionary, type ICollection, List, KeyValuePair } from "@/System.Collections.Generic";
+import { out } from "@/lib/emul/_namespace";
+import { type IDictionary, type IReadOnlyDictionary, type ICollection, type IReadOnlyCollection, List, KeyValuePair } from "@/System.Collections.Generic";
 
 /**
  * @class Dictionary<TKey,TValue>
@@ -8,7 +8,7 @@ import { type IDictionary, type IReadOnlyDictionary, type ICollection, List, Key
  * @param {TKey} TKey - The type of keys in the dictionary.
  * @param {TValue} TValue - The type of values in the dictionary.
  */
-class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue>, IReadOnlyDictionary<TKey, TValue>
+class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue>, IReadOnlyDictionary<TKey, TValue>, Iterable<KeyValuePair<TKey, TValue>>
 {
 
     protected _map: Map<TKey, TValue> = new Map<TKey, TValue>();
@@ -30,16 +30,35 @@ class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue>, IReadOnlyDi
         return iterator;
     }
 
-    public readonly IsReadOnly = false;
+    [index: number]: KeyValuePair<TKey, TValue>;
 
-    public get Keys(): ICollection<TKey>
+    constructor(items: Iterable<KeyValuePair<TKey, TValue> | [TKey, TValue]> = [])
     {
-        return new List<TKey>(this._map.keys());
+        for (const item of items)
+        {
+            if (item instanceof KeyValuePair)
+            {
+                this.Add(item.Key, item.Value);
+            }
+            else
+            {
+                this.Add(item[0], item[1]);
+            }
+        }
     }
 
-    public get Values(): ICollection<TValue>
+    public readonly IsFixedSize = false;
+
+    public readonly IsReadOnly = false;
+
+    public get Keys(): KeyCollection<TKey, TValue>
     {
-        return new List<TValue>(this._map.values());
+        return new KeyCollection(this);
+    }
+
+    public get Values(): ValueCollection<TKey, TValue>
+    {
+        return new ValueCollection(this);
     }
 
     public get Count(): number
@@ -98,17 +117,16 @@ class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue>, IReadOnlyDi
         return this._map.has(key);
     }
 
-    public Remove(key: TKey, value?: out<TValue>): boolean
+    public ContainsValue(value: TValue): boolean
+    {
+        return Array.from(this._map.values()).includes(value);
+    }
+
+    public Remove(key: TKey): boolean
     {
         if (key === null) throw Error("key is null");
         if (this.IsReadOnly) throw Error("The dictionary is read-only");
 
-        if (value !== undefined)
-        {
-            const result = this._map.get(key);
-            if (result === undefined) return false;
-            value.value = result;
-        }
         return this._map.delete(key);
     }
 
@@ -162,5 +180,138 @@ class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue>, IReadOnlyDi
         }
     }
 
+    /**
+     * @todo Check this more carefully
+     * @custom Found in NetCollection in the SDV source code, moved here.
+     * @description Removes all elements that match the conditions defined by the predicate.
+     * @param {(item: KeyValuePair<TKey, TValue>) => boolean} match - The delegate that defines the conditions of the elements to remove.
+     */
+    public RemoveWhere(match: (item: KeyValuePair<TKey, TValue>) => boolean): number
+    {
+        if (this.Count === 0)
+        {
+            return 0;
+        }
+        let removed = 0;
+        for (let value of this)
+        {
+            if (match(value))
+            {
+                this.Remove(value.Key);
+                removed++;
+            }
+        }
+        return removed;
+    }
 }
 export default Dictionary;
+
+/**
+ * @todo Implement more carefully, AI mostly wrote this from my other code.
+ */
+class KeyCollection<TKey, TValue> implements ICollection<TKey>, IReadOnlyCollection<TKey>, Iterable<TKey>
+{
+    private _dictionary: Dictionary<TKey, TValue>;
+
+    public readonly IsFixedSize = false;
+
+    public readonly IsReadOnly = true;
+
+    constructor(dictionary: Dictionary<TKey, TValue>)
+    {
+        this._dictionary = dictionary;
+    }
+
+    [Symbol.iterator](): Iterator<TKey>
+    {
+        return this._dictionary.Keys[Symbol.iterator]();
+    }
+
+    [index: number]: TKey;
+
+    public get Count(): number
+    {
+        return this._dictionary.Count;
+    }
+
+    public Contains(item: TKey): boolean
+    {
+        return this._dictionary.ContainsKey(item);
+    }
+
+    public CopyTo(array: TKey[], arrayIndex: number): void
+    {
+        this._dictionary.Keys.CopyTo(array, arrayIndex);
+    }
+
+    public Add(item: TKey): void
+    {
+        throw Error("The collection is read-only");
+    }
+
+    public Clear(): void
+    {
+        throw Error("The collection is read-only");
+    }
+
+    public Remove(item: TKey): boolean
+    {
+        throw Error("The collection is read-only");
+    }
+
+}
+
+/**
+ * @todo Implement more carefully, AI mostly wrote this from my other code.
+ */
+class ValueCollection<TKey, TValue> implements ICollection<TValue>, IReadOnlyCollection<TValue>, Iterable<TValue>
+{
+    private _dictionary: Dictionary<TKey, TValue>;
+
+    public readonly IsFixedSize = false;
+
+    public readonly IsReadOnly = true;
+
+    constructor(dictionary: Dictionary<TKey, TValue>)
+    {
+        this._dictionary = dictionary;
+    }
+
+    [Symbol.iterator](): Iterator<TValue>
+    {
+        return this._dictionary.Values[Symbol.iterator]();
+    }
+
+    [index: number]: TValue;
+
+    public get Count(): number
+    {
+        return this._dictionary.Count;
+    }
+
+    public Contains(item: TValue): boolean
+    {
+        return this._dictionary.ContainsValue(item);
+    }
+
+    public CopyTo(array: TValue[], arrayIndex: number): void
+    {
+        this._dictionary.Values.CopyTo(array, arrayIndex);
+    }
+
+    public Add(item: TValue): void
+    {
+        throw Error("The collection is read-only");
+    }
+
+    public Clear(): void
+    {
+        throw Error("The collection is read-only");
+    }
+
+    public Remove(item: TValue): boolean
+    {
+        throw Error("The collection is read-only");
+    }
+
+}

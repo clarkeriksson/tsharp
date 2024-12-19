@@ -1,4 +1,4 @@
-import { out } from "@/emul";
+import { out } from "@/lib/emul/_namespace";
 import { type ICollection, type ISet, type IReadOnlyCollection, type IReadOnlySet } from "@/System.Collections.Generic";
 
 /**
@@ -13,6 +13,10 @@ class HashSet<T = any> implements ICollection<T>, ISet<T>, IReadOnlyCollection<T
     private _set: Set<T> = new Set<T>();
 
     public readonly IsReadOnly = false;
+
+    public readonly IsFixedSize = false;
+
+    [index: number]: T;
 
     public get Count(): number
     {

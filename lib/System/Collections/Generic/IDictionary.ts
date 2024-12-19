@@ -1,4 +1,4 @@
-import { out } from "@/emul";
+import { out } from "@/lib/emul/_namespace";
 import { type ICollection, KeyValuePair } from "@/System.Collections.Generic";
 
 type IKeyValueCollection<TKey, TValue> = Omit<ICollection<KeyValuePair<TKey, TValue>>, "Add" | "Remove"> & {
@@ -74,7 +74,7 @@ interface IDictionary<TKey, TValue> extends IKeyValueCollection<TKey, TValue>
      * @throws {ArgumentNullException} key is null.
      * @throws {NotSupportedException} The IDictionary is read-only.
      */
-    Remove(key: TKey, value?: out<TValue>): boolean;
+    Remove(key: TKey): boolean;
 
     /**
      * @description Gets the value associated with the specified key.

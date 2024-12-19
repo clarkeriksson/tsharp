@@ -29,7 +29,10 @@
         "*"
       ],
       "@/emul": [
-        "lib/emul/_emul"
+        "lib/emul/_namespace"
+      ],
+      "@/extensions": [
+        "lib/extensions/_namespace"
       ],
       "@/System": [
         "lib/System/_namespace"
@@ -48,6 +51,9 @@
       ],
       "@/System.Collections.Generic/*": [
         "lib/System/Collections/Generic/*"
+      ],
+      "@/System.IO": [
+        "lib/System/IO/_namespace"
       ]
     }
   }

@@ -2,12 +2,12 @@ import
 {
     out,
 } 
-from "@/emul";
+from "@/lib/emul/_namespace";
 
 import
 {
-    IDisposable,
-    IStringable,
+    type IDisposable,
+    type IStringable,
     DayOfWeek,
     StringComparison,
     StringSplitOptions,
@@ -17,17 +17,17 @@ from "@/System";
 
 import
 {
-    ICollection,
-    IReadOnlyCollection,
-    IList,
+    type ICollection,
+    type IReadOnlyCollection,
+    type IList,
     List,
-    IReadOnlyList,
+    type IReadOnlyList,
     KeyValuePair,
-    IDictionary,
+    type IDictionary,
     Dictionary,
-    IReadOnlyDictionary,
-    ISet,
-    IReadOnlySet,
+    type IReadOnlyDictionary,
+    type ISet,
+    type IReadOnlySet,
     HashSet,
 }
 from "@/System.Collections.Generic";
@@ -35,22 +35,22 @@ from "@/System.Collections.Generic";
 export
 {
     out,
-    IDisposable,
-    IStringable,
+    type IDisposable,
+    type IStringable,
     DayOfWeek,
     StringComparison,
     StringSplitOptions,
     Random,
-    ICollection,
-    IReadOnlyCollection,
-    IList,
+    type ICollection,
+    type IReadOnlyCollection,
+    type IList,
     List,
-    IReadOnlyList,
+    type IReadOnlyList,
     KeyValuePair,
-    IDictionary,
+    type IDictionary,
     Dictionary,
-    IReadOnlyDictionary,
-    ISet,
-    IReadOnlySet,
+    type IReadOnlyDictionary,
+    type ISet,
+    type IReadOnlySet,
     HashSet,
 }

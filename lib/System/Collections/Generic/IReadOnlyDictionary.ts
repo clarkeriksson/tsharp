@@ -1,4 +1,4 @@
-import { out } from "@/emul";
+import { out } from "@/lib/emul/_namespace";
 import { type ICollection, type IReadOnlyCollection, KeyValuePair } from "@/System.Collections.Generic";
 
 /**

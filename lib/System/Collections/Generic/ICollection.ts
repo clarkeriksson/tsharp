@@ -9,11 +9,19 @@
 interface ICollection<T = any> extends Iterable<T>
 {
 
+    [index: number]: T;
+
     /**
      * @description Gets the number of elements contained in the collection.
      * @returns {number} The number of elements contained in the collection.
      */
     get Count(): number;
+
+    /**
+     * @description Gets a value indicating whether the collection is read-only.
+     * @returns {boolean} True if the collection is fixed-size; otherwise, false.
+     */
+    get IsFixedSize(): boolean;
 
     /**
      * @description Gets a value indicating whether the collection is read-only.

@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "description": "C#-like classes and interfaces in typescript for personal use",
   "exports": {
-    "./emul": "./lib/emul/_emul.ts",
+    "./emul": "./lib/emul/_namespace.ts",
+    "./extensions": "./lib/extensions/_namespace.ts",
     "./System": "./lib/System/_namespace.ts",
-    "./System.Collections.Generic": "./lib/System/Collections/Generic/_namespace.ts"
+    "./System.Collections.Generic": "./lib/System/Collections/Generic/_namespace.ts",
+    "./System.IO": "./lib/System/IO/_namespace.ts"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

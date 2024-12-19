@@ -12,7 +12,7 @@ export default class out<T>
         }
         else
         {
-            throw Error("T# out variables should not be accessed before being set.");
+            throw Error("tsharp out variables should not be accessed before being set.");
         }
     }
 

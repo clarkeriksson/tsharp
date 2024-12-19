@@ -1,4 +1,5 @@
-import { type IList, type IReadOnlyList } from "@/System.Collections.Generic";
+import { type Comparison } from "@/System";
+import { type IList, type IReadOnlyList, type IComparer } from "@/System.Collections.Generic";
 
 /**
  * @class List<T>
@@ -15,25 +16,13 @@ class List<T> implements IList<T>, IReadOnlyList<T>, Iterable<T>
         return this._items.length;
     }
 
+    public readonly IsFixedSize: boolean = false;
+
     public readonly IsReadOnly: boolean = false;
 
     [Symbol.iterator](): IterableIterator<T>
     {
-        let index = 0;
-        const next = (): IteratorResult<T> => {
-            if (index < this.Count)
-            {
-                return { value: this[index++], done: false };
-            }
-            else
-            {
-                return { value: null, done: true };
-            }
-        }
-
-        const iterator: IterableIterator<T> = { next, [Symbol.iterator]() { return iterator; } };
-
-        return iterator;
+        return this._items[Symbol.iterator]();
     }
 
     constructor(items: Iterable<T> = [])
@@ -122,6 +111,19 @@ class List<T> implements IList<T>, IReadOnlyList<T>, Iterable<T>
         return true;
     }
 
+    /**
+     * C# {start: int, length: int}
+     */
+    public Slice(start: number, length: number): List<T>
+    {
+        if (start < 0) throw RangeError("The start index is out of range.");
+        if (length < 0) throw RangeError("The length is less than zero.");
+
+        if (start + length > this.Count) throw RangeError("The start index and length do not denote a valid range in the list.");
+
+        return new List<T>(this._items.slice(start, start + length));
+    }
+
     private isValidIndex(prop: string): boolean
     {
         const uint = Number.parseInt(prop, 10);
@@ -142,6 +144,33 @@ class List<T> implements IList<T>, IReadOnlyList<T>, Iterable<T>
             {
                 this.RemoveAt(i);
             }
+        }
+    }
+
+    /**
+     * @description Sorts the elements in the entire List<T> using the specified comparer.
+     * @param {Comparison<T>} comparison - The Comparison<T> to use when comparing elements.
+     * @param {number} index - The zero-based starting index of the range to sort.
+     * @param {number} count - The length of the range to sort.
+     * @param {IComparer<T>} comparer - The IComparer<T> implementation to use when comparing elements, or null to use the default comparer Comparer<T>.Default
+     */
+    public Sort(comparison: Comparison<T>): void
+    public Sort(index: number, count: number, comparer: IComparer<T>): void
+    public Sort(arg0: Comparison<T> | number, arg1?: number, arg2?: IComparer<T>): void
+    {
+        if (typeof arg0 !== "number")
+        {
+            this._items.sort(arg0);
+        }
+        else if (typeof arg0 === "number" && typeof arg1 === "number" && arg2 !== undefined)
+        {
+            if (arg0 < 0 || arg1 < 0) throw Error("The index or count is less than zero.");
+            if (arg0 + arg1 > this.Count) throw Error("The index and count do not denote a valid range in the list.");
+            if (arg2 === null) throw TypeError("The comparer is null.");
+
+            const items = this._items.slice(arg0, arg0 + arg1);
+            items.sort(arg2.Compare);
+            this._items.splice(arg0, arg1, ...items);
         }
     }
 
