@@ -6,8 +6,13 @@ import { type IReadOnlyCollection } from "@/System.Collections.Generic";
  * @description Represents a read-only collection of elements that can be accessed by index.
  * @param {T} T - The type of elements in the read-only list.
  */
-interface IReadOnlyList<T = any> extends IReadOnlyCollection<T>, Iterable<T>
+
+export const IReadOnlyList: unique symbol = Symbol("System.Collections.Generic.IReadOnlyList");
+
+export interface IReadOnlyList<T = any> extends IReadOnlyCollection<T>, Iterable<T>
 {
+
+    [IReadOnlyList]: true;
 
     /**
      * @description Gets the element at the specified index in the read-only list.
@@ -18,4 +23,3 @@ interface IReadOnlyList<T = any> extends IReadOnlyCollection<T>, Iterable<T>
     [Symbol.iterator](): Iterator<T>;
 
 }
-export type { IReadOnlyList };

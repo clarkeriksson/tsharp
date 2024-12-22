@@ -6,8 +6,13 @@
  * 
  * @remarks This interface does not exist in C#, instead the ToString() method is defined in the Object class.
  */
-interface IStringable<T = any>
+
+export const IStringable: unique symbol = Symbol("System.IStringable");
+
+export interface IStringable<T = any>
 {
+
+    [IStringable]: true;
 
     /**
      * @description Returns a string that represents the current object.
@@ -16,4 +21,3 @@ interface IStringable<T = any>
     ToString(): string;
 
 }
-export type { IStringable };

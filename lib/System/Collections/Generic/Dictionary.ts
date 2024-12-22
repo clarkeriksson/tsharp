@@ -1,6 +1,5 @@
 import { out } from "@/lib/emul/_namespace";
-import { type IDictionary, type IReadOnlyDictionary, type ICollection, type IReadOnlyCollection, List, KeyValuePair } from "@/System.Collections.Generic";
-
+import { IDictionary, IReadOnlyDictionary, ICollection, IReadOnlyCollection, KeyValuePair } from "@/System.Collections.Generic";
 /**
  * @class Dictionary<TKey,TValue>
  * @namespace System.Collections.Generic
@@ -10,6 +9,13 @@ import { type IDictionary, type IReadOnlyDictionary, type ICollection, type IRea
  */
 class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue>, IReadOnlyDictionary<TKey, TValue>, Iterable<KeyValuePair<TKey, TValue>>
 {
+
+    private static readonly __brand: unique symbol = Symbol("Dictionary");
+
+    [IDictionary]: true = true;
+    [ICollection]: true = true;
+    [IReadOnlyCollection]: true = true;
+    [IReadOnlyDictionary]: true = true;
 
     protected _map: Map<TKey, TValue> = new Map<TKey, TValue>();
 
@@ -83,7 +89,7 @@ class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue>, IReadOnlyDi
 
         this._map.set(key, value);
     }
-
+    
     public Add(key: TKey, value: TValue): void
     {
         if (key === null) throw Error("key is null");
@@ -211,6 +217,12 @@ export default Dictionary;
  */
 class KeyCollection<TKey, TValue> implements ICollection<TKey>, IReadOnlyCollection<TKey>, Iterable<TKey>
 {
+
+    private static readonly __brand: unique symbol = Symbol("KeyCollection");
+
+    [ICollection]: true = true;
+    [IReadOnlyCollection]: true = true;
+
     private _dictionary: Dictionary<TKey, TValue>;
 
     public readonly IsFixedSize = false;
@@ -266,6 +278,12 @@ class KeyCollection<TKey, TValue> implements ICollection<TKey>, IReadOnlyCollect
  */
 class ValueCollection<TKey, TValue> implements ICollection<TValue>, IReadOnlyCollection<TValue>, Iterable<TValue>
 {
+
+    private static readonly __brand: unique symbol = Symbol("ValueCollection");
+
+    [ICollection]: true = true;
+    [IReadOnlyCollection]: true = true;
+
     private _dictionary: Dictionary<TKey, TValue>;
 
     public readonly IsFixedSize = false;

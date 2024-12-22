@@ -10,8 +10,13 @@ import { type ICollection, type IReadOnlyCollection, KeyValuePair } from "@/Syst
  * 
  * @remarks IKeyValueCollection is a helper interface that allows the method signature of Add and Remove to be overwritten. In C# it would be ICollection<KeyValuePair<TKey, TValue>>.
  */
-interface IReadOnlyDictionary<TKey, TValue> extends IReadOnlyCollection<KeyValuePair<TKey, TValue>>
+
+export const IReadOnlyDictionary: unique symbol = Symbol("System.Collections.Generic.IReadOnlyDictionary");
+
+export interface IReadOnlyDictionary<TKey, TValue> extends IReadOnlyCollection<KeyValuePair<TKey, TValue>>
 {
+
+    [IReadOnlyDictionary]: true;
 
     /**
      * @description Gets an ICollection containing the keys of the IReadOnlyDictionary.
@@ -53,4 +58,3 @@ interface IReadOnlyDictionary<TKey, TValue> extends IReadOnlyCollection<KeyValue
     TryGetValue(key: TKey, value: out<TValue>): boolean;
 
 }
-export type { IReadOnlyDictionary };

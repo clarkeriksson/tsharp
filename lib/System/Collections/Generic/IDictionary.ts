@@ -1,10 +1,12 @@
 import { out } from "@/lib/emul/_namespace";
 import { type ICollection, KeyValuePair } from "@/System.Collections.Generic";
 
-type IKeyValueCollection<TKey, TValue> = Omit<ICollection<KeyValuePair<TKey, TValue>>, "Add" | "Remove"> & {
+interface IKeyValueCollection<TKey, TValue> extends Omit<ICollection<KeyValuePair<TKey, TValue>>, "Add" | "Remove"> {
     Add(key: TKey, value: TValue): void;
     Remove(key: TKey): boolean;
 }
+
+export const IDictionary: unique symbol = Symbol("System.Collections.Generic.IDictionary");
 
 /**
  * @interface IDictionary<TKey,TValue>
@@ -15,8 +17,10 @@ type IKeyValueCollection<TKey, TValue> = Omit<ICollection<KeyValuePair<TKey, TVa
  * 
  * @remarks IKeyValueCollection is a helper interface that allows the method signature of Add and Remove to be overwritten. In C# it would be ICollection<KeyValuePair<TKey, TValue>>.
  */
-interface IDictionary<TKey, TValue> extends IKeyValueCollection<TKey, TValue>
+export interface IDictionary<TKey, TValue> extends IKeyValueCollection<TKey, TValue>
 {
+
+    [IDictionary]: true;
 
     /**
      * @description Gets an ICollection containing the keys of the IDictionary.
@@ -86,7 +90,6 @@ interface IDictionary<TKey, TValue> extends IKeyValueCollection<TKey, TValue>
     TryGetValue(key: TKey, value: out<TValue>): boolean;
 
 }
-export type { IDictionary };
 
 enum InsertionBehavior
 {

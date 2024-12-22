@@ -15,6 +15,11 @@ import { type ICollection, type IList } from "@/System.Collections.Generic";
 class ArrayCS<T = any> implements ICollection<T>, IList<T>, Iterable<T>
 {
 
+    ["System.ArrayCS"]: true = true;
+
+    ["System.Collections.Generic.ICollection"]: true = true;
+    ["System.Collections.Generic.IList"]: true = true;
+
     private _items: Array<T>;
     private _dimensions: Array<number>;
     [index: number]: T;

@@ -1,5 +1,5 @@
 import { out } from "@/lib/emul/_namespace";
-import { type ICollection, type ISet, type IReadOnlyCollection, type IReadOnlySet } from "@/System.Collections.Generic";
+import { ICollection, ISet, IReadOnlyCollection, IReadOnlySet } from "@/System.Collections.Generic";
 
 /**
  * @class HashSet<T>
@@ -9,6 +9,13 @@ import { type ICollection, type ISet, type IReadOnlyCollection, type IReadOnlySe
  */
 class HashSet<T = any> implements ICollection<T>, ISet<T>, IReadOnlyCollection<T>, IReadOnlySet<T>
 {
+
+    private static readonly __brand = Symbol("HashSet");
+
+    [ICollection]: true = true;
+    [IReadOnlyCollection]: true = true;
+    [ISet]: true = true;
+    [IReadOnlySet]: true = true;
 
     private _set: Set<T> = new Set<T>();
 

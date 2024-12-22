@@ -1,5 +1,8 @@
 class Path
 {
+
+    private static readonly __brand: unique symbol = Symbol("Path");
+
     public static GetFileNameWithoutExtension(path: Nullable<string>): Nullable<string>
     {
         if (path === null)
@@ -15,5 +18,6 @@ class Path
         }
         return result;
     }
+    
 }
 export default Path;

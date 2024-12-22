@@ -8,6 +8,8 @@ import { List } from "@/System.Collections.Generic";
 class Random //TODO: this is mostly filled out with what I need exclusively, but I should probably fill out the rest of the class.
 {
 
+    private static readonly __brand: unique symbol = Symbol("Random");
+
     public static readonly MAX_VALUE: number = 0x100000000;
 
     private static SplitMix32(seed: number): () => number

@@ -6,8 +6,13 @@ import { type IReadOnlyCollection } from "@/System.Collections.Generic";
  * @description Provides a readonly abstraction of a set.
  * @param {T} T - The type of elements in the set.
  */
-interface IReadOnlySet<T = any> extends IReadOnlyCollection<T>, Iterable<T>
+
+export const IReadOnlySet: unique symbol = Symbol("System.Collections.Generic.IReadOnlySet");
+
+export interface IReadOnlySet<T = any> extends IReadOnlyCollection<T>, Iterable<T>
 {
+
+    [IReadOnlySet]: true;
 
     /**
      * @description Determines whether the set contains a specific value.
@@ -31,4 +36,3 @@ interface IReadOnlySet<T = any> extends IReadOnlyCollection<T>, Iterable<T>
     // SetEquals(other: Iterable<T>): boolean;
 
 }
-export type { IReadOnlySet };

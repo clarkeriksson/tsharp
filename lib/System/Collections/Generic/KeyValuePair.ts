@@ -5,8 +5,11 @@
  * @param {TKey} TKey - The type of the key.
  * @param {TValue} TValue - The type of the value.
  */
+
 class KeyValuePair<TKey, TValue>
 {
+
+    private static readonly __brand: unique symbol = Symbol("KeyValuePair");
 
     private readonly key: TKey;
     private readonly value: TValue;

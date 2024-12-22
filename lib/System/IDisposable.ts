@@ -3,8 +3,13 @@
  * @namespace System
  * @description Provides a mechanism for releasing unmanaged resources.
  */
-interface IDisposable
+
+export const IDisposable: unique symbol = Symbol("System.IDisposable");
+
+export interface IDisposable
 {
+
+    [IDisposable]: true;
 
     /**
      * @description Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
@@ -12,4 +17,3 @@ interface IDisposable
     Dispose(): void;
 
 }
-export type { IDisposable };

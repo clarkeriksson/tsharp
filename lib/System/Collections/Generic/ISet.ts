@@ -6,8 +6,13 @@ import { type ICollection } from "@/System.Collections.Generic";
  * @description Provides the base interface for the abstraction of sets.
  * @param {T} T - The type of elements in the set.
  */
-interface ISet<T = any> extends ICollection<T>, Iterable<T>
+
+export const ISet: unique symbol = Symbol("System.Collections.Generic.ISet");
+
+export interface ISet<T = any> extends ICollection<T>, Iterable<T>
 {
+
+    [ISet]: true;
 
     /**
      * @description Adds an element to the current set and returns a value to indicate if the element was successfully added.
@@ -39,4 +44,3 @@ interface ISet<T = any> extends ICollection<T>, Iterable<T>
     // UnionWith(other: Iterable<T>): void;
 
 }
-export type { ISet };

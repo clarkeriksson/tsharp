@@ -8,8 +8,13 @@ import { type ICollection } from "@/System.Collections.Generic";
  * 
  * @remarks using System.Reflection
  */
-interface IList<T = any> extends ICollection<T>, Iterable<T>
+
+export const IList: unique symbol = Symbol("System.Collections.Generic.IList");
+
+export interface IList<T = any> extends ICollection<T>, Iterable<T>
 {
+
+    [IList]: true;
 
     /**
      * @description Gets or sets the element at the specified index.
@@ -46,4 +51,3 @@ interface IList<T = any> extends ICollection<T>, Iterable<T>
     RemoveAt(index: number): void;
 
 }
-export type { IList };

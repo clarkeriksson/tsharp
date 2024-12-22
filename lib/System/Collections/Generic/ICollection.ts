@@ -6,8 +6,12 @@
  * 
  * @remarks #nullable enable
  */
-interface ICollection<T = any> extends Iterable<T>
+
+export const ICollection: unique symbol = Symbol("System.Collections.Generic.ICollection");
+export interface ICollection<T = any> extends Iterable<T>
 {
+
+    [ICollection]: true;
 
     [index: number]: T;
 
@@ -68,4 +72,3 @@ interface ICollection<T = any> extends Iterable<T>
     Remove(item: T): boolean;
 
 }
-export type { ICollection };

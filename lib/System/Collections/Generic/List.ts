@@ -1,5 +1,5 @@
 import { type Comparison } from "@/System";
-import { type IList, type IReadOnlyList, type IComparer } from "@/System.Collections.Generic";
+import { IList, IReadOnlyList, ICollection, IReadOnlyCollection, IComparer } from "@/System.Collections.Generic";
 
 /**
  * @class List<T>
@@ -7,6 +7,13 @@ import { type IList, type IReadOnlyList, type IComparer } from "@/System.Collect
  */
 class List<T> implements IList<T>, IReadOnlyList<T>, Iterable<T>
 {
+
+    private static readonly __brand: unique symbol = Symbol("List");
+
+    [IList]: true = true;
+    [IReadOnlyList]: true = true;
+    [ICollection]: true = true;
+    [IReadOnlyCollection]: true = true;
 
     protected _items: T[] = new Array<T>();
     [index: number]: T;
