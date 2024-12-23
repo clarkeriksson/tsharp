@@ -5,12 +5,12 @@
  * @param {T} T - The type of the elements.
  */
 
-export const IReadOnlyCollection: unique symbol = Symbol("System.Collections.Generic.IReadOnlyCollection");
+//export const IReadOnlyCollection: unique symbol = Symbol("System.Collections.Generic.IReadOnlyCollection");
 
 export interface IReadOnlyCollection<T = any> extends Iterable<T>
 {
 
-    [IReadOnlyCollection]: true;
+    //[IReadOnlyCollection]: true;
 
     /**
      * @description Gets the number of elements in the collection.

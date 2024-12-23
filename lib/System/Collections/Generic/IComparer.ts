@@ -4,12 +4,12 @@
  * @description Defines a method that a type implements to compare two objects.
  */
 
-export const IComparer: unique symbol = Symbol("System.Collections.Generic.IComparer");
+//export const IComparer: unique symbol = Symbol("System.Collections.Generic.IComparer");
 
 export interface IComparer<T = any>
 {
 
-    [IComparer]: true;
+    //[IComparer]: true;
 
     /**
      * @description Compares two objects and returns a value indicating whether one is less than, equal to, or greater than the other.

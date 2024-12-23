@@ -7,12 +7,12 @@ import { type IReadOnlyCollection } from "@/System.Collections.Generic";
  * @param {T} T - The type of elements in the set.
  */
 
-export const IReadOnlySet: unique symbol = Symbol("System.Collections.Generic.IReadOnlySet");
+//export const IReadOnlySet: unique symbol = Symbol("System.Collections.Generic.IReadOnlySet");
 
 export interface IReadOnlySet<T = any> extends IReadOnlyCollection<T>, Iterable<T>
 {
 
-    [IReadOnlySet]: true;
+    //[IReadOnlySet]: true;
 
     /**
      * @description Determines whether the set contains a specific value.

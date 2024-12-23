@@ -1,5 +1,5 @@
 import { out } from "@/lib/emul/_namespace";
-import { IDictionary, IReadOnlyDictionary, ICollection, IReadOnlyCollection, KeyValuePair } from "@/System.Collections.Generic";
+import { type IDictionary, type IReadOnlyDictionary, type ICollection, type IReadOnlyCollection, KeyValuePair } from "@/System.Collections.Generic";
 /**
  * @class Dictionary<TKey,TValue>
  * @namespace System.Collections.Generic
@@ -10,12 +10,12 @@ import { IDictionary, IReadOnlyDictionary, ICollection, IReadOnlyCollection, Key
 class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue>, IReadOnlyDictionary<TKey, TValue>, Iterable<KeyValuePair<TKey, TValue>>
 {
 
-    private static readonly __brand: unique symbol = Symbol("Dictionary");
+    //private static readonly __brand: unique symbol = Symbol("Dictionary");
 
-    [IDictionary]: true = true;
-    [ICollection]: true = true;
-    [IReadOnlyCollection]: true = true;
-    [IReadOnlyDictionary]: true = true;
+    //[IDictionary]: true = true;
+    //[ICollection]: true = true;
+    //[IReadOnlyCollection]: true = true;
+    //[IReadOnlyDictionary]: true = true;
 
     protected _map: Map<TKey, TValue> = new Map<TKey, TValue>();
 
@@ -218,10 +218,10 @@ export default Dictionary;
 class KeyCollection<TKey, TValue> implements ICollection<TKey>, IReadOnlyCollection<TKey>, Iterable<TKey>
 {
 
-    private static readonly __brand: unique symbol = Symbol("KeyCollection");
+    //private static readonly __brand: unique symbol = Symbol("KeyCollection");
 
-    [ICollection]: true = true;
-    [IReadOnlyCollection]: true = true;
+    //[ICollection]: true = true;
+    //[IReadOnlyCollection]: true = true;
 
     private _dictionary: Dictionary<TKey, TValue>;
 
@@ -279,10 +279,10 @@ class KeyCollection<TKey, TValue> implements ICollection<TKey>, IReadOnlyCollect
 class ValueCollection<TKey, TValue> implements ICollection<TValue>, IReadOnlyCollection<TValue>, Iterable<TValue>
 {
 
-    private static readonly __brand: unique symbol = Symbol("ValueCollection");
+    //private static readonly __brand: unique symbol = Symbol("ValueCollection");
 
-    [ICollection]: true = true;
-    [IReadOnlyCollection]: true = true;
+    //[ICollection]: true = true;
+    //[IReadOnlyCollection]: true = true;
 
     private _dictionary: Dictionary<TKey, TValue>;
 

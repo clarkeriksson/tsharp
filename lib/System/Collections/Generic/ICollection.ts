@@ -7,11 +7,11 @@
  * @remarks #nullable enable
  */
 
-export const ICollection: unique symbol = Symbol("System.Collections.Generic.ICollection");
+//export const ICollection: unique symbol = Symbol("System.Collections.Generic.ICollection");
 export interface ICollection<T = any> extends Iterable<T>
 {
 
-    [ICollection]: true;
+    //[ICollection]: true;
 
     [index: number]: T;
 

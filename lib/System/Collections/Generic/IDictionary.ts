@@ -6,7 +6,7 @@ interface IKeyValueCollection<TKey, TValue> extends Omit<ICollection<KeyValuePai
     Remove(key: TKey): boolean;
 }
 
-export const IDictionary: unique symbol = Symbol("System.Collections.Generic.IDictionary");
+//export const IDictionary = Symbol("System.Collections.Generic.IDictionary");
 
 /**
  * @interface IDictionary<TKey,TValue>
@@ -20,7 +20,7 @@ export const IDictionary: unique symbol = Symbol("System.Collections.Generic.IDi
 export interface IDictionary<TKey, TValue> extends IKeyValueCollection<TKey, TValue>
 {
 
-    [IDictionary]: true;
+    //[IDictionary]: true;
 
     /**
      * @description Gets an ICollection containing the keys of the IDictionary.

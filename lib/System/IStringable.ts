@@ -7,12 +7,12 @@
  * @remarks This interface does not exist in C#, instead the ToString() method is defined in the Object class.
  */
 
-export const IStringable: unique symbol = Symbol("System.IStringable");
+//export const IStringable: unique symbol = Symbol("System.IStringable");
 
 export interface IStringable<T = any>
 {
 
-    [IStringable]: true;
+    //[IStringable]: true;
 
     /**
      * @description Returns a string that represents the current object.

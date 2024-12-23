@@ -7,12 +7,12 @@ import { type IReadOnlyCollection } from "@/System.Collections.Generic";
  * @param {T} T - The type of elements in the read-only list.
  */
 
-export const IReadOnlyList: unique symbol = Symbol("System.Collections.Generic.IReadOnlyList");
+//export const IReadOnlyList: unique symbol = Symbol("System.Collections.Generic.IReadOnlyList");
 
 export interface IReadOnlyList<T = any> extends IReadOnlyCollection<T>, Iterable<T>
 {
 
-    [IReadOnlyList]: true;
+    //[IReadOnlyList]: true;
 
     /**
      * @description Gets the element at the specified index in the read-only list.

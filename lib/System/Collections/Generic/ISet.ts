@@ -7,12 +7,12 @@ import { type ICollection } from "@/System.Collections.Generic";
  * @param {T} T - The type of elements in the set.
  */
 
-export const ISet: unique symbol = Symbol("System.Collections.Generic.ISet");
+//export const ISet: unique symbol = Symbol("System.Collections.Generic.ISet");
 
 export interface ISet<T = any> extends ICollection<T>, Iterable<T>
 {
 
-    [ISet]: true;
+    //[ISet]: true;
 
     /**
      * @description Adds an element to the current set and returns a value to indicate if the element was successfully added.

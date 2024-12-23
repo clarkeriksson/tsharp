@@ -9,7 +9,7 @@
 class KeyValuePair<TKey, TValue>
 {
 
-    private static readonly __brand: unique symbol = Symbol("KeyValuePair");
+    //private static readonly __brand: unique symbol = Symbol("KeyValuePair");
 
     private readonly key: TKey;
     private readonly value: TValue;

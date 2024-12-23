@@ -9,12 +9,12 @@ import { type ICollection } from "@/System.Collections.Generic";
  * @remarks using System.Reflection
  */
 
-export const IList: unique symbol = Symbol("System.Collections.Generic.IList");
+//export const IList: unique symbol = Symbol("System.Collections.Generic.IList");
 
 export interface IList<T = any> extends ICollection<T>, Iterable<T>
 {
 
-    [IList]: true;
+    //[IList]: true;
 
     /**
      * @description Gets or sets the element at the specified index.
